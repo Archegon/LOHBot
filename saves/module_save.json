@@ -1,0 +1,10 @@
+{
+    "Fairy": {
+        "cooldown_end": 0,
+        "enable": true
+    },
+    "Mystic": {
+        "cooldown_end": 0,
+        "enable": true
+    }
+}
