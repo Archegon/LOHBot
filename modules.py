@@ -1,5 +1,6 @@
 import time
 from save import Savefile
+from game import loh
 
 module_save = 'saves/module_save.json'
 module_f = Savefile(module_save)
@@ -67,6 +68,7 @@ class Module:
     def run_routine(self):
         print("=========================================")
         self.print("Starting routine!")
+        loh.b_window.set_focus()
         self.routine()
         self.save()
         self.print("Routine Ended!")
@@ -74,14 +76,14 @@ class Module:
 
     # Check if the cooldown time has lapsed.
     def run(self):
-        if self.start_only is False:
+        if self.start_only is False and self.enable:
             if time.time() >= self.cooldown_end:
                 return True
             else:
                 return False
 
     def run_start(self):
-        if self.start_only:
+        if self.start_only and self.enable is True:
             if time.time() >= self.cooldown_end:
                 return True
             else:

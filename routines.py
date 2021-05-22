@@ -47,7 +47,7 @@ def login_routine():
 login.set_routine(login_routine)
 
 # Fairy Collector
-fairy = Module('Fairy Collector', 1800)
+fairy = Module('Fairy Collector', 300)
 
 
 def fairy_routine():
@@ -67,7 +67,7 @@ def fairy_routine():
             game_control.back()
         else:
             fairy.print("No gift found.")
-            fairy.set_cooldown_time(300)
+            fairy.set_cooldown_time(120)
 
 
 fairy.set_routine(fairy_routine)
@@ -211,7 +211,7 @@ def coliseum_bot_routine():
     while True:
         enemy_b.click()
         enemy_enter_b.click()
-        time.sleep(10)
+        time.sleep(20)
 
         if entered_battle_check.check_for('enter'):
             break
@@ -230,6 +230,167 @@ def coliseum_bot_routine():
 
 
 coliseum_bot.set_routine(coliseum_bot_routine)
+
+# Alchemy Collector
+alchemy_collector = Module('Alchemy Collector', 72000)
+
+
+def alchemy_collector_routine():
+    alchemy_b = Point(1496, 841, 1293, 211)
+    alchemy_left_b = Point(1496, 841, 629, 477)
+    alchemy_free_check = Region(1496, 841, 826, 674, 950, 735)
+    alchemy_confirm_b = Point(1496, 841, 749, 576)
+    alchemy_drag_start = Point(1496, 841, 773, 579)
+    alchemy_drag_end = Point(1496, 841, 228, 477)
+    game_control.add_drag('Alchemy', alchemy_drag_start, alchemy_drag_end)
+    alchemy_reveal_b = Point(1496, 841, 1427, 785)
+
+    left_click_val = 3
+
+    alchemy_b.click()
+
+    if alchemy_free_check.check_for('free'):
+        while left_click_val > 0:
+            alchemy_left_b.click()
+            time.sleep(1)
+            left_click_val -= 1
+
+        alchemy_free_check.click()
+        alchemy_confirm_b.click()
+        time.sleep(7)
+        game_control.drag('Alchemy')
+        time.sleep(10)
+        alchemy_reveal_b.click()
+        alchemy_collector.set_cooldown_time()
+    else:
+        alchemy_collector.set_cooldown_time(3600)
+
+    game_control.back_to_main()
+
+
+alchemy_collector.set_routine(alchemy_collector_routine)
+
+# Event Collector NEEDS UPDATE
+event_collector = Module('Event Collector', 7200)
+
+
+def event_collector_routine():
+    event_b = Point(1496, 841, 99, 242)
+    random_b = Point(1496, 841, 1389, 786)
+    event_b_list = [Point(1496, 841, 125, 101), Point(1496, 841, 147, 219), Point(1496, 841, 145, 327)]
+    event_txt_check = Region(1496, 841, 419, 93, 1134, 198)
+    login_b_list = [Point(1496, 841, 1348, 573), Point(1496, 841, 1144, 561), Point(1496, 841, 967, 574),
+                    Point(1496, 841, 765, 596), Point(1496, 841, 587, 556), Point(1496, 841, 389, 551)]
+    ptu_b_list = [Point(1496, 841, 1017, 500), Point(1496, 841, 870, 649), Point(1496, 841, 732, 504),
+                  Point(1496, 841, 581, 655), Point(1496, 841, 444, 494)]
+    energetic_b_list = [Point(1496, 841, 1039, 511), Point(1496, 841, 843, 645), Point(1496, 841, 699, 484),
+                        Point(1496, 841, 566, 632), Point(1496, 841, 428, 471)]
+
+    check_string = ['login event', 'paid to upgrade_', 'energetic efforts']
+
+    event_b.click()
+    time.sleep(5)
+
+    for event_1_b in event_b_list:
+        event_1_b.click()
+        time.sleep(1)
+
+        for check in check_string:
+            if event_txt_check.check_for(check):
+                if check == 'login event':
+                    for login_b in login_b_list:
+                        login_b.click()
+                        time.sleep(1)
+
+                    random_b.click()
+                    time.sleep(2)
+                elif check == 'paid to upgrade_':
+                    for ptu_b in ptu_b_list:
+                        ptu_b.click()
+                        time.sleep(1)
+
+                    random_b.click()
+                    time.sleep(2)
+                elif check == 'energetic efforts':
+                    for energetic_b in energetic_b_list:
+                        energetic_b.click()
+                        time.sleep(1)
+
+                    random_b.click()
+                    time.sleep(2)
+
+    event_collector.set_cooldown_time()
+    game_control.back_to_main()
+
+
+event_collector.set_routine(event_collector_routine)
+
+# Expedition Collector
+expedition_collector = Module('Expedition Collector', 10800)
+
+
+def expedition_collector_routine():
+    world_b = Point(1496, 841, 1384, 766)
+    option_1_b = Point(1496, 841, 1237, 748)
+    complete_check = Region(1496, 841, 1329, 596, 1446, 621)
+    yes_check = Region(1496, 841, 845, 554, 928, 605)
+    exped_b = Point(1496, 841, 1411, 767)
+    hard_b = Point(1496, 841, 783, 179)
+    auto_select_b = Point(1496, 841, 946, 772)
+    dispatch_b = Point(1496, 841, 1270, 766)
+    dispatch_confirm_b = Point(1496, 841, 907, 593)
+
+    world_b.click()
+
+    if complete_check.check_for('completel'):
+        while complete_check.check_for('completel'):
+            complete_check.click()
+            time.sleep(3)
+
+            if yes_check.check_for('yes'):
+                yes_check.click()
+                time.sleep(5)
+                game_control.back()
+                time.sleep(1)
+                break
+
+            option_1_b.click()
+            time.sleep(3)
+            game_control.back()
+            time.sleep(1)
+
+        exped_b.click()
+        hard_b.click()
+        auto_select_b.click()
+        dispatch_b.click()
+        dispatch_confirm_b.click()
+        expedition_collector.set_cooldown_time()
+        time.sleep(10)
+    else:
+        expedition_collector.set_cooldown_time(3600)
+
+    game_control.back_to_main()
+
+
+expedition_collector.set_routine(expedition_collector_routine)
+
+# Auto Primeval Halls
+auto_primeval = Module('Auto Primeval', 7200, enable=False)
+auto_primeval.save()
+
+
+def auto_primeval_routine():
+    print(auto_primeval.enable)
+    energy_check = Region(1496, 841, 746, 12, 904, 47)
+    energy = energy_check.read()[0][1]
+    energy = energy[:energy.find('/')]
+    energy = energy.replace(',', '')
+
+    print(energy)
+    time.sleep(10)
+
+
+auto_primeval.set_routine(auto_primeval_routine)
 
 # Auto Restart
 auto_restart = Module('Auto Restart', 3600, load_data=False)

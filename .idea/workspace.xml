@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Added Auto Restart Module">
+    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Improved Auto Restart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/game_region.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/game_region.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ocr_result.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/ocr_result.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/position.py" beforeDir="false" afterPath="$PROJECT_DIR$/position.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routines.py" beforeDir="false" afterPath="$PROJECT_DIR$/routines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saves/module_save.json" beforeDir="false" afterPath="$PROJECT_DIR$/saves/module_save.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/screen_position_finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/screen_position_finder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621698815349</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Improved Auto Restart">
+      <created>1621699322412</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1621699322412</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -260,6 +271,7 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Added more routines" />
     <MESSAGE value="Added Auto Restart Module" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Auto Restart Module" />
+    <MESSAGE value="Improved Auto Restart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved Auto Restart" />
   </component>
 </project>
