@@ -8,10 +8,11 @@ module_f = Savefile(module_save)
 class Module:
     instances = []
 
-    def __init__(self, name, cooldown=0, enable=True, start_only=False):
+    def __init__(self, name, cooldown=0, enable=True, start_only=False, load_data=True):
         self.__class__.instances.append(self)
         self.cooldown = cooldown
         self.cooldown_end = 0
+        self.load_data = load_data
         self.name = name
         self.start_only = start_only
         self.routine = None
@@ -19,14 +20,15 @@ class Module:
         self.enable = enable
 
     def load(self):
-        save_file = module_f.load()
+        if self.load_data:
+            save_file = module_f.load()
 
-        try:
-            self.cooldown_end = save_file[self.name]['cooldown_end']
-            self.enable = save_file[self.name]['enable']
-            self.print("Loaded data")
-        except KeyError:
-            self.print('No save found')
+            try:
+                self.cooldown_end = save_file[self.name]['cooldown_end']
+                self.enable = save_file[self.name]['enable']
+                self.print("Loaded data")
+            except KeyError:
+                self.print('No save found')
 
     def save(self):
         save_dict = {
@@ -89,10 +91,11 @@ class Module:
 class ModuleManager:
     def __init__(self):
         self.modules = Module.instances
+        self.stop = False
 
     # Run all enabled modules, depending on their cooldown timers.
     def run(self, module_name=None):
-        if module_name is None:
+        if module_name is None or not self.stop:
             for module in self.modules:
                 if module.run():
                     module.run_routine()
@@ -100,9 +103,10 @@ class ModuleManager:
             self.modules[module_name].run_routine()
 
     def run_start(self):
-        for module in self.modules:
-            if module.run_start():
-                module.run_routine()
+        if not self.stop:
+            for module in self.modules:
+                if module.run_start():
+                    module.run_routine()
 
     def load(self):
         for module in self.modules:

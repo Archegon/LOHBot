@@ -22,16 +22,14 @@ class Game:
         self.__start_y = None
         self.app = None
 
-        self.start()
-
     def start(self):
         Application().start(self.path, timeout=10)
         time.sleep(5)
         self.app = Application().connect(best_match='KeymapCanvasWindow', top_level_only=False, visible_only=False,
-                                         timeout=10)
+                                         timeout=30)
         win_str = "KeymapCanvasWindow"
         self.g_window = self.app.window(best_match=win_str, top_level_only=False, visible_only=False)
-        self.b_window = self.app.window(title='BlueStacks')
+        self.b_window = self.app.window(best_match='BlueStacks')
         self.g_window.set_focus()
         self.g_window.wait('exists', timeout=20)
         print('GAME WINDOW READY')
@@ -83,6 +81,9 @@ class Game:
         self.__start_x = self.g_window.rectangle().left
         self.__start_y = self.g_window.rectangle().top
         return self.__start_x, self.__start_y
+
+    def kill(self):
+        self.app.kill()
 
 
 class GameControl:
@@ -173,9 +174,13 @@ class GameControl:
             after_action(parameter)
         GameControl.print('Back to Main Page.')
 
+    def kill_program(self):
+        self.game.kill()
+
 
 APP_PATH = r'C:\Program Files\BlueStacks_bgp64\HD-RunApp.exe -json "{\"app_icon_url\":\"\",' \
            r'\"app_name\":\"LordOfHeroes\",\"app_url\":\"\",\"app_pkg\":\"com.clovergames.lordofheroes\"} '
 
 loh = Game(APP_PATH)
+loh.start()
 game_control = GameControl(loh)

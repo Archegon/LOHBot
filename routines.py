@@ -3,6 +3,8 @@ from modules import Module, ModuleManager
 from position import Region, Point
 from game import game_control
 
+module_manager = ModuleManager()
+
 main_page_check = Region(1503, 845, 1345, 798, 1431, 825)
 game_control.add_page('Main', 'world', main_page_check)
 main_home_check = Region(1503, 845, 1022, 139, 1123, 170)
@@ -38,6 +40,9 @@ def login_routine():
         if touch_to_start.check_for('touch to start'):
             touch_b.click()
 
+    time.sleep(5)
+    game_control.back_to_main()
+
 
 login.set_routine(login_routine)
 
@@ -62,6 +67,7 @@ def fairy_routine():
             game_control.back()
         else:
             fairy.print("No gift found.")
+            fairy.set_cooldown_time(300)
 
 
 fairy.set_routine(fairy_routine)
@@ -107,7 +113,7 @@ def mystic_shop_routine():
 mystic_shop.set_routine(mystic_shop_routine)
 
 # Alliance Collector
-alliance = Module('Alliance Collector', 900)
+alliance = Module('Alliance Collector', 3600)
 
 
 def alliance_routine():
@@ -128,7 +134,7 @@ def alliance_routine():
 alliance.set_routine(alliance_routine)
 
 # Feats Collector
-feats_collector = Module('Feats Collector', 1800)
+feats_collector = Module('Feats Collector', 3600)
 
 
 def feats_collector_routine():
@@ -225,5 +231,14 @@ def coliseum_bot_routine():
 
 coliseum_bot.set_routine(coliseum_bot_routine)
 
+# Auto Restart
+auto_restart = Module('Auto Restart', 3600, load_data=False)
+auto_restart.set_cooldown_time()
 
-module_manager = ModuleManager()
+
+def auto_restart_routine():
+    module_manager.stop = True
+    game_control.kill_program()
+
+
+auto_restart.set_routine(auto_restart_routine)
