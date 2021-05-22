@@ -12,7 +12,7 @@ class BasePosition(metaclass=abc.ABCMeta):
     start_left = game.start_position()[0]
     start_top = game.start_position()[1]
 
-    def __init__(self, w, h, left, top, right = None, bottom = None):
+    def __init__(self, w, h, left, top, right=None, bottom=None):
         self.scale = BasePosition.window_w / w
         self.left = left
         self.top = top
@@ -61,7 +61,8 @@ class BasePosition(metaclass=abc.ABCMeta):
 
     @staticmethod
     def print(txt):
-        return print('\t' + txt)
+        return print('\t\t' + txt)
+
 
 class Point(BasePosition):
     def __init__(self, w, h, left, top):
@@ -72,6 +73,7 @@ class Point(BasePosition):
             return self.get_absolute()[0], self.get_absolute()[1]
         else:
             return self.get_relative()[1], self.get_relative()[0]
+
 
 class Region(BasePosition):
     def __init__(self, w, h, left, top, right, bottom):

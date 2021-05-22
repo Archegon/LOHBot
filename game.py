@@ -5,7 +5,6 @@ import pyautogui
 from ocr import Ocr
 from pywinauto import Application
 
-
 APP_PATH = r'C:\Program Files\BlueStacks_bgp64\HD-RunApp.exe -json "{\"app_icon_url\":\"\",' \
            r'\"app_name\":\"LordOfHeroes\",\"app_url\":\"\",\"app_pkg\":\"com.clovergames.lordofheroes\"} '
 
@@ -24,17 +23,18 @@ class Game:
         self.game_img_path = 'images/game_screenshot.png'
         self.__start_x = None
         self.__start_y = None
+        self.app = None
 
         self.start()
 
     def start(self):
         Application().start(self.path, timeout=10)
         time.sleep(5)
-        app = Application().connect(best_match='KeymapCanvasWindow', top_level_only=False, visible_only=False,
+        self.app = Application().connect(best_match='KeymapCanvasWindow', top_level_only=False, visible_only=False,
                                     timeout=10)
         win_str = "KeymapCanvasWindow"
-        self.g_window = app.window(best_match=win_str, top_level_only=False, visible_only=False)
-        self.b_window = app.window(title='BlueStacks')
+        self.g_window = self.app.window(best_match=win_str, top_level_only=False, visible_only=False)
+        self.b_window = self.app.window(title='BlueStacks')
         self.g_window.set_focus()
         self.g_window.wait('exists', timeout=20)
         print('GAME WINDOW READY')
@@ -87,16 +87,95 @@ class Game:
         self.__start_y = self.g_window.rectangle().top
         return self.__start_x, self.__start_y
 
+
 class GameControl:
     def __init__(self, game):
         self.game = game
         self.pages = {}
+        self.drags = {}
+
+    @staticmethod
+    def print(txt):
+        return print('\t' + txt)
 
     def add_page(self, page_name, check_str, region):
-        self.pages.update(dict(page_name, (check_str, region)))
+        temp_dict = {
+            page_name: {
+                'region': region,
+                'check_str': check_str
+            }
+        }
+        self.pages.update(temp_dict)
 
     def at_page(self, page_name):
-        print(self.pages)
+        try:
+            if self.pages[page_name]['region'].check_for(self.pages[page_name]['check_str']):
+                GameControl.print(f'At_Page: Currently at {page_name}.')
+                return True
+            else:
+                GameControl.print(f'At_Page: NOT at {page_name}.')
+                return False
+        except KeyError:
+            GameControl.print('At_Page: KEY NOT FOUND')
+
+    def add_drag(self, drag_name, start_point, end_point):
+        temp_dict = {
+            drag_name:
+                {
+                    'start': start_point,
+                    'end': end_point
+                }
+        }
+
+        self.drags.update(temp_dict)
+
+    def drag(self, drag_name, speed=1):
+        try:
+            self.game.set_focus()
+            pyautogui.moveTo(*self.drags[drag_name]['start'].position())
+            pyautogui.dragTo(*self.drags[drag_name]['end'].position(), speed)
+            GameControl.print(f'Drag: {drag_name}')
+        except KeyError:
+            GameControl.print(f'Drag: KEY NOT FOUND')
+
+    def set_quit_confirmation(self, check_str, region):
+        temp_dict = {
+            'quit': {
+                'region': region,
+                'check_str': check_str
+            }
+        }
+
+        self.pages.update(temp_dict)
+
+    def get_quit_confirmation(self):
+        self.game.set_focus()
+
+        try:
+            if self.pages['quit']['region'].check_for(self.pages['quit']['check_str']):
+                return True
+            else:
+                return False
+        except KeyError:
+            GameControl.print('Quit Confirmation NOT SET!')
+
+    def back(self):
+        self.game.set_focus()
+        pyautogui.hotkey('ctrl', 'shift', '2')
+        time.sleep(0.5)
+        GameControl.print("Backed")
+
+    def goto_main(self, after_action=None, parameter=None):
+        self.game.set_focus()
+
+        while not self.get_quit_confirmation():
+            self.back()
+
+        self.back()
+        if after_action is not None:
+            after_action(parameter)
+        GameControl.print('Back to Main Page.')
+
 
 loh = Game(APP_PATH)
 game_control = GameControl(loh)
