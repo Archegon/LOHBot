@@ -1,4 +1,5 @@
 import abc
+import time
 import pyautogui
 import cv2
 from game import loh
@@ -58,6 +59,8 @@ class BasePosition(metaclass=abc.ABCMeta):
             center_y = (self.position()[1] + self.position()[3]) / 2
 
             pyautogui.click((center_x, center_y))
+
+        time.sleep(0.5)
 
     @staticmethod
     def print(txt):
@@ -154,6 +157,7 @@ class Region(BasePosition):
 
     def locate_click(self, check_str, visualize=False):
         pyautogui.click(self.locate(check_str, visualize=visualize))
+        time.sleep(0.5)
 
     def draw(self):
         self.img = Region.game.save()

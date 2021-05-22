@@ -1,10 +1,26 @@
 {
-    "Mystic": {
-        "cooldown_end": 0,
+    "Fairy Collector": {
+        "cooldown_end": 1621691057.4629788,
         "enable": true
     },
-    "Fairy Collector": {
-        "cooldown_end": 1621685070.58584,
+    "Mystic Shop": {
+        "cooldown_end": 1621691746.755601,
+        "enable": true
+    },
+    "Alliance Collector": {
+        "cooldown_end": 1621690257.4203854,
+        "enable": true
+    },
+    "Feats Collector": {
+        "cooldown_end": 1621691165.5277226,
+        "enable": true
+    },
+    "Mails Collector": {
+        "cooldown_end": 1621691176.4955356,
+        "enable": true
+    },
+    "Coliseum Bot": {
+        "cooldown_end": 1621704547.563692,
         "enable": true
     }
 }

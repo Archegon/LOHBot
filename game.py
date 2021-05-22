@@ -162,7 +162,7 @@ class GameControl:
         time.sleep(0.5)
         GameControl.print("Backed")
 
-    def goto_main(self, after_action=None, parameter=None):
+    def back_to_main(self, after_action=None, parameter=None):
         self.game.set_focus()
 
         while not self.get_quit_confirmation():

@@ -32,5 +32,3 @@ class Savefile:
         self.save_dict.update(save_dict)
         self.save()
 
-
-module_f = Savefile(module_save)

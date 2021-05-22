@@ -1,5 +1,8 @@
 import time
-from save import module_f
+from save import Savefile
+
+module_save = 'saves/module_save.json'
+module_f = Savefile(module_save)
 
 
 class Module:
@@ -17,9 +20,13 @@ class Module:
 
     def load(self):
         save_file = module_f.load()
-        self.cooldown_end = save_file[self.name]['cooldown_end']
-        self.enable = save_file[self.name]['enable']
-        self.print("Loaded data")
+
+        try:
+            self.cooldown_end = save_file[self.name]['cooldown_end']
+            self.enable = save_file[self.name]['enable']
+            self.print("Loaded data")
+        except KeyError:
+            self.print('No save found')
 
     def save(self):
         save_dict = {
@@ -47,8 +54,12 @@ class Module:
     def set_routine(self, function):
         self.routine = function
 
-    def set_cooldown_time(self):
-        self.cooldown_end = time.time() + self.cooldown
+    def set_cooldown_time(self, cooldown=None):
+        if cooldown is None:
+            self.cooldown_end = time.time() + self.cooldown
+        else:
+            self.cooldown_end = time.time() + cooldown
+
         self.print(f'Set cooldown time to {self.cooldown_end}')
 
     def run_routine(self):
@@ -80,9 +91,17 @@ class ModuleManager:
         self.modules = Module.instances
 
     # Run all enabled modules, depending on their cooldown timers.
-    def run(self):
+    def run(self, module_name=None):
+        if module_name is None:
+            for module in self.modules:
+                if module.run():
+                    module.run_routine()
+        else:
+            self.modules[module_name].run_routine()
+
+    def run_start(self):
         for module in self.modules:
-            if module.run():
+            if module.run_start():
                 module.run_routine()
 
     def load(self):

@@ -1,6 +1,6 @@
 from routines import module_manager
 from game import loh
-
+from position import Region, Point
 
 AUTO_RESTART = False
 
@@ -10,6 +10,7 @@ def setup():
 
     while loh.app.is_process_running():
         module_manager.run()
+        pass
     else:
         print("Application ended.")
 
