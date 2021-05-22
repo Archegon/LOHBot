@@ -1,6 +1,5 @@
 import os
 import time
-from modules import Module
 from game import loh
 from routines import module_manager
 
@@ -9,7 +8,6 @@ AUTO_RESTART = True
 
 def setup():
     print('Starting...')
-    Module.instances = []
     module_manager.load()
     module_manager.run_start()
 
@@ -22,7 +20,6 @@ def setup():
         time.sleep(10)
         print("Restarting...")
         os.system('loader.py')
-        setup()
 
 
 setup()
