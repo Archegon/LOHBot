@@ -61,7 +61,7 @@ class BasePosition(metaclass=abc.ABCMeta):
 
     @staticmethod
     def print(txt):
-        return print('\t\t' + txt)
+        return print('\t' + txt)
 
 
 class Point(BasePosition):

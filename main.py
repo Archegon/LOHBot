@@ -1,12 +1,13 @@
-from modules import ModuleManager
+from routines import module_manager
 from game import loh
 
 
 AUTO_RESTART = False
-module_manager = ModuleManager()
 
 
 def setup():
+    module_manager.load()
+
     while loh.app.is_process_running():
         module_manager.run()
     else:

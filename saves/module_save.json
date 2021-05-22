@@ -1,10 +1,10 @@
 {
-    "Fairy": {
+    "Mystic": {
         "cooldown_end": 0,
         "enable": true
     },
-    "Mystic": {
-        "cooldown_end": 0,
+    "Fairy Collector": {
+        "cooldown_end": 1621685070.58584,
         "enable": true
     }
 }

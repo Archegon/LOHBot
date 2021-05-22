@@ -5,9 +5,6 @@ import pyautogui
 from ocr import Ocr
 from pywinauto import Application
 
-APP_PATH = r'C:\Program Files\BlueStacks_bgp64\HD-RunApp.exe -json "{\"app_icon_url\":\"\",' \
-           r'\"app_name\":\"LordOfHeroes\",\"app_url\":\"\",\"app_pkg\":\"com.clovergames.lordofheroes\"} '
-
 
 class Game:
     ocr = Ocr()
@@ -31,7 +28,7 @@ class Game:
         Application().start(self.path, timeout=10)
         time.sleep(5)
         self.app = Application().connect(best_match='KeymapCanvasWindow', top_level_only=False, visible_only=False,
-                                    timeout=10)
+                                         timeout=10)
         win_str = "KeymapCanvasWindow"
         self.g_window = self.app.window(best_match=win_str, top_level_only=False, visible_only=False)
         self.b_window = self.app.window(title='BlueStacks')
@@ -176,6 +173,9 @@ class GameControl:
             after_action(parameter)
         GameControl.print('Back to Main Page.')
 
+
+APP_PATH = r'C:\Program Files\BlueStacks_bgp64\HD-RunApp.exe -json "{\"app_icon_url\":\"\",' \
+           r'\"app_name\":\"LordOfHeroes\",\"app_url\":\"\",\"app_pkg\":\"com.clovergames.lordofheroes\"} '
 
 loh = Game(APP_PATH)
 game_control = GameControl(loh)

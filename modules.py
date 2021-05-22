@@ -5,7 +5,7 @@ from save import module_f
 class Module:
     instances = []
 
-    def __init__(self, name, cooldown=0, start_only=False):
+    def __init__(self, name, cooldown=0, enable=True, start_only=False):
         self.__class__.instances.append(self)
         self.cooldown = cooldown
         self.cooldown_end = 0
@@ -13,7 +13,7 @@ class Module:
         self.start_only = start_only
         self.routine = None
         self.state = None
-        self.enable = True
+        self.enable = enable
 
     def load(self):
         save_file = module_f.load()
@@ -49,12 +49,15 @@ class Module:
 
     def set_cooldown_time(self):
         self.cooldown_end = time.time() + self.cooldown
+        self.print(f'Set cooldown time to {self.cooldown_end}')
 
     def run_routine(self):
+        print("=========================================")
         self.print("Starting routine!")
         self.routine()
         self.save()
         self.print("Routine Ended!")
+        print("=========================================")
 
     # Check if the cooldown time has lapsed.
     def run(self):

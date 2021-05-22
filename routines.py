@@ -1,14 +1,15 @@
 import time
-from modules import Module
+from modules import Module, ModuleManager
 from position import Region, Point
 from game import game_control
+
 
 main_page_check = Region(1503, 845, 1345, 798, 1431, 825)
 game_control.add_page('Main', 'world', main_page_check)
 main_home_check = Region(1503, 845, 1022, 139, 1123, 170)
-game_control.add_page('Main_home', 'feats', main_home_check)
+game_control.add_page('Main_Home', 'feats', main_home_check)
 main_mystic_check = Region(1503, 845, 664, 239, 762, 278)
-game_control.add_page('Main_home', 'mystic', main_mystic_check)
+game_control.add_page('Main_Mystic', 'mystic', main_mystic_check)
 
 # Drag to Main_mystic
 # Set up drag start and end point
@@ -52,7 +53,7 @@ def fairy_routine():
     fairy_b = Point(1646, 926, 811, 524)  # Collect fairy gift button
 
     # Check if on home page.
-    if game_control.at_page('Main_home'):
+    if game_control.at_page('Main_Home'):
         # Check if collectable.
         # If empty means collectable.
         if fairy_status.check_empty():
@@ -66,3 +67,5 @@ def fairy_routine():
 
 
 fairy.set_routine(fairy_routine)
+
+module_manager = ModuleManager()
