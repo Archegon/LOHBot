@@ -25,6 +25,8 @@ class Game:
         self.__start_x = None
         self.__start_y = None
 
+        self.start()
+
     def start(self):
         Application().start(self.path, timeout=10)
         time.sleep(5)
@@ -39,9 +41,6 @@ class Game:
 
     def set_focus(self):
         self.g_window.set_focus()
-        time.sleep(0.2)
-
-    def set_keyboard_focus(self):
         self.b_window.set_keyboard_focus()
         time.sleep(0.2)
 
@@ -88,5 +87,16 @@ class Game:
         self.__start_y = self.g_window.rectangle().top
         return self.__start_x, self.__start_y
 
+class GameControl:
+    def __init__(self, game):
+        self.game = game
+        self.pages = {}
+
+    def add_page(self, page_name, check_str, region):
+        self.pages.update(dict(page_name, (check_str, region)))
+
+    def at_page(self, page_name):
+        print(self.pages)
 
 loh = Game(APP_PATH)
+game_control = GameControl(loh)

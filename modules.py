@@ -5,7 +5,7 @@ from save import module_f
 class Module:
     instances = []
 
-    def __init__(self, name, cooldown):
+    def __init__(self, name, cooldown=0):
         self.__class__.instances.append(self)
         self.cooldown = cooldown
         self.cooldown_end = 0
@@ -18,7 +18,7 @@ class Module:
         save_file = module_f.load()
         self.cooldown_end = save_file[self.name]['cooldown_end']
         self.enable = save_file[self.name]['enable']
-        print(self.get_name(), "Loaded data")
+        self.print("Loaded data")
 
     def save(self):
         save_dict = {
@@ -29,7 +29,7 @@ class Module:
         }
 
         module_f.update(save_dict)
-        print(self.get_name(), "Saved data")
+        self.print("Saved data")
 
     def get_name(self):
         name = self.name + ":"
@@ -47,13 +47,13 @@ class Module:
         self.routine = function
 
     def run_routine(self):
-        print(self.get_name(), "Starting routine!")
+        self.print("Starting routine!")
         self.routine()
 
         # Set new cooldown time.
         self.cooldown_end = time.time() + self.cooldown
         self.save()
-        print(self.get_name(), "Routine Ended!")
+        self.print("Routine Ended!")
 
     # Check if the cooldown time has lapsed.
     def run(self):
