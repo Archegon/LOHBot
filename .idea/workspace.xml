@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Increased Delay after clicks">
-      <change afterPath="$PROJECT_DIR$/routines/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/alchemy_collector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/alliance_routine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/auto_restart.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/coliseum_bot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/event_collector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/expedition_collector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/fairy_collector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/feats_collector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/login_routine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/mails_collector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/mystic_routine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/primeval_auto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routines/routines_setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/game_region.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/game_region.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routines.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saves/module_save.json" beforeDir="false" afterPath="$PROJECT_DIR$/saves/module_save.json" afterDir="false" />
-    </list>
+    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Moved routines to separate modules" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -277,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621739785784</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Moved routines to separate modules">
+      <created>1621749508809</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1621749508809</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -299,6 +285,7 @@
     <MESSAGE value="Improved Auto Restart" />
     <MESSAGE value="Added more routines" />
     <MESSAGE value="Increased Delay after clicks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Increased Delay after clicks" />
+    <MESSAGE value="Moved routines to separate modules" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved routines to separate modules" />
   </component>
 </project>
