@@ -60,7 +60,7 @@ class BasePosition(metaclass=abc.ABCMeta):
 
             pyautogui.click((center_x, center_y))
 
-        time.sleep(1)
+        time.sleep(2)
 
     @staticmethod
     def print(txt):

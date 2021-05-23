@@ -180,7 +180,7 @@ def mails_collector_routine():
 
 mails_collector.set_routine(mails_collector_routine)
 
-# Coliseum Bot
+# Coliseum Bot //Make checks for page
 coliseum_bot = Module('Coliseum Bot', 14400)
 
 
@@ -196,6 +196,7 @@ def coliseum_bot_routine():
     auto_b = Point(1495, 841, 368, 799)
     leave_check = Region(1495, 841, 380, 712, 544, 768)
     entered_battle_check = Region(1495, 841, 633, 707, 744, 755)
+    coliseum_page_check = None
 
     game_control.add_drag('WorldToColiseum', coliseum_drag_start, coliseum_drag_end)
 
@@ -203,13 +204,16 @@ def coliseum_bot_routine():
     time.sleep(2)
     game_control.drag('WorldToColiseum')
     coliseum_check.locate_click('coliseum')
-    time.sleep(5)
+    time.sleep(7)
     reward_b.click()
+    time.sleep(2)
     reward_collect_b.click()
     game_control.back()
+    time.sleep(3)
 
     while True:
         enemy_b.click()
+        time.sleep(3)
         enemy_enter_b.click()
         time.sleep(20)
 
@@ -376,15 +380,17 @@ expedition_collector.set_routine(expedition_collector_routine)
 
 # Auto Primeval Halls
 auto_primeval = Module('Auto Primeval', 7200, enable=False)
-auto_primeval.save()
 
 
 def auto_primeval_routine():
-    print(auto_primeval.enable)
     energy_check = Region(1496, 841, 746, 12, 904, 47)
+    battle_outcome_check = Region(1496, 841, 682, 736, 808, 788)
+    next_b = 0
+
     energy = energy_check.read()[0][1]
     energy = energy[:energy.find('/')]
-    energy = energy.replace(',', '')
+    energy = int(energy.replace(',', ''))
+    energy_required = 10000
 
     print(energy)
     time.sleep(10)
