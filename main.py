@@ -29,8 +29,8 @@ def check_app_exit():
         pass
 
     print("Process exited")
+    print("Restarting in 5 seconds...")
     time.sleep(5)
-    print("Restarting...")
     os.system('loader.py')
 
 
