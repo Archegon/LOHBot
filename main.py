@@ -11,27 +11,25 @@ def setup():
     module_manager.run_start()
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        executor.submit(check_app_exit)
+        module_thread = executor.submit(run_modules)
 
         try:
-            executor.submit(app_running)
+            module_thread.result()
         except:
-            print("app except raised")
+            print("module_thread exception raised")
+            app_restart()
 
 
-def app_running():
-    while loh.app.is_process_running():
+def run_modules():
+    while True:
         module_manager.run()
 
 
-def check_app_exit():
-    while loh.app.is_process_running():
-        pass
-
-    print("Process exited")
-    print("Restarting in 5 seconds...")
-    time.sleep(5)
-    os.system('loader.py')
+def app_restart():
+    if not loh.app.is_process_running():
+        print("Restarting in 5 seconds...")
+        time.sleep(5)
+        os.system('loader.py')
 
 
 setup()

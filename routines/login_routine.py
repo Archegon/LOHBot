@@ -13,7 +13,7 @@ def login_routine():
     touch_b = Point(1637, 920, 616, 517)
 
     start_time = time.time()
-    time_out = 300
+    time_out = 60
     kill_game = False
 
     while not game_control.at_page('Main'):
@@ -28,6 +28,7 @@ def login_routine():
         time.sleep(5)
         game_control.back_to_main()
     else:
+        login.print("Login FAILED. Killing bluestack.")
         module_manager.stop = True
         game_control.kill_program()
 

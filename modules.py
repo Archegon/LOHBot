@@ -18,7 +18,6 @@ class Module:
         self.start_only = start_only
         self.standalone = standalone
         self.routine = None
-        self.state = None
         self.enable = enable
 
     def load(self):
