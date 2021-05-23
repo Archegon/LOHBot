@@ -1,10 +1,8 @@
+import concurrent.futures
 import os
 import time
 from game import loh
 from routines.routines_setup import module_manager
-
-
-AUTO_RESTART = True
 
 
 def setup():
@@ -12,15 +10,28 @@ def setup():
     module_manager.load()
     module_manager.run_start()
 
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.submit(check_app_exit)
+
+        try:
+            executor.submit(app_running)
+        except:
+            print("app except raised")
+
+
+def app_running():
     while loh.app.is_process_running():
         module_manager.run()
 
-    if AUTO_RESTART:
-        loh.app.wait_for_process_exit(timeout=20)
-        print("Process exited")
-        time.sleep(10)
-        print("Restarting...")
-        os.system('loader.py')
+
+def check_app_exit():
+    while loh.app.is_process_running():
+        pass
+
+    print("Process exited")
+    time.sleep(5)
+    print("Restarting...")
+    os.system('loader.py')
 
 
 setup()
