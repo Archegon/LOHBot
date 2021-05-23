@@ -1,22 +1,22 @@
 {
     "Fairy Collector": {
-        "cooldown_end": 1621739131.7640312,
+        "cooldown_end": 1621749428.1466076,
         "enable": true
     },
     "Mystic Shop": {
-        "cooldown_end": 1621739550.7078736,
+        "cooldown_end": 1621751637.0265098,
         "enable": true
     },
     "Alliance Collector": {
-        "cooldown_end": 1621740762.3733106,
+        "cooldown_end": 1621749397.941743,
         "enable": true
     },
     "Feats Collector": {
-        "cooldown_end": 1621740770.9496388,
+        "cooldown_end": 1621749446.2461865,
         "enable": true
     },
     "Mails Collector": {
-        "cooldown_end": 1621740828.5540829,
+        "cooldown_end": 1621750937.3106873,
         "enable": true
     },
     "Coliseum Bot": {
@@ -32,15 +32,15 @@
         "enable": true
     },
     "Alchemy Collector": {
-        "cooldown_end": 1621741074.4168546,
+        "cooldown_end": 1621749382.2831123,
         "enable": true
     },
     "Expedition Collector": {
-        "cooldown_end": 1621748368.3577788,
+        "cooldown_end": 1621752718.0234601,
         "enable": true
     },
     "Event Collector": {
-        "cooldown_end": 1621744717.931566,
+        "cooldown_end": 1621753031.330824,
         "enable": true
     },
     "Auto Primeval": {

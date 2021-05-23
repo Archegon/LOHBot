@@ -9,13 +9,14 @@ module_f = Savefile(module_save)
 class Module:
     instances = []
 
-    def __init__(self, name, cooldown=0, enable=True, start_only=False, load_data=True):
+    def __init__(self, name, cooldown=0, enable=True, start_only=False, load_data=True, standalone=False):
         self.__class__.instances.append(self)
         self.cooldown = cooldown
         self.cooldown_end = 0
         self.load_data = load_data
         self.name = name
         self.start_only = start_only
+        self.standalone = standalone
         self.routine = None
         self.state = None
         self.enable = enable
@@ -76,7 +77,7 @@ class Module:
 
     # Check if the cooldown time has lapsed.
     def run(self):
-        if self.start_only is False and self.enable:
+        if not self.start_only and self.enable and not self.standalone:
             if time.time() >= self.cooldown_end:
                 return True
             else:

@@ -1,7 +1,8 @@
 import os
 import time
 from game import loh
-from routines import module_manager
+from routines.routines_setup import module_manager
+
 
 AUTO_RESTART = True
 
