@@ -65,7 +65,7 @@ class BasePosition(metaclass=abc.ABCMeta):
 
     @staticmethod
     def print(txt):
-        return print('\tPosition Class: ' + txt)
+        return print('\t' + txt)
 
 
 class Point(BasePosition):
@@ -102,7 +102,7 @@ class Region(BasePosition):
             if filter_str:
                 read = re.sub(r"[^a-zA-Z0-9 ]+", '', read)
 
-            Region.print(f'Result: {read.upper()}  Check: {check_str.upper()}')
+            Region.print(f'Check Result: {read.upper()}  Check: {check_str.upper()}')
 
             if read.upper() == check_str.upper():
                 return True
