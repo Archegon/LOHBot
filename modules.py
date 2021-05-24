@@ -123,9 +123,10 @@ class ModuleManager:
         # Use in a separate thread only
         if not self.stop:
             while True:
-                if time.time() - Module.start_time >= self.time_out:
-                    print("STUCK!")
-                    return True
+                if Module.start_time is not None:
+                    if time.time() - Module.start_time >= self.time_out:
+                        print("STUCK!")
+                        return True
                 time.sleep(5)
 
     def load(self):
