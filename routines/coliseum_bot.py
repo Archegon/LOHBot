@@ -3,7 +3,7 @@ from game import game_control
 from modules import Module
 from position import Region, Point
 
-# Coliseum Bot //Make checks for page
+# Coliseum Bot
 coliseum_bot = Module('Coliseum Bot', 14400)
 
 
@@ -19,7 +19,8 @@ def coliseum_bot_routine():
     auto_b = Point(1495, 841, 368, 799)
     leave_check = Region(1495, 841, 380, 712, 544, 768)
     entered_battle_check = Region(1495, 841, 633, 707, 744, 755)
-    coliseum_page_check = None
+    coliseum_page_check = Region(1649, 928, 543, 541, 676, 579)
+    auto_b_check = Region(1649, 928, 381, 862, 425, 897)
 
     game_control.add_drag('WorldToColiseum', coliseum_drag_start, coliseum_drag_end)
 
@@ -28,29 +29,42 @@ def coliseum_bot_routine():
     game_control.drag('WorldToColiseum')
     coliseum_check.locate_click('coliseum')
     time.sleep(7)
-    reward_b.click()
-    time.sleep(2)
-    reward_collect_b.click()
-    game_control.back()
-    time.sleep(3)
 
-    while True:
-        enemy_b.click()
-        time.sleep(3)
-        enemy_enter_b.click()
-        time.sleep(20)
+    if coliseum_page_check.check_for('defense'):
+        while True:
+            coliseum_bot.print('Waiting for Coliseum page.')
+            while not coliseum_page_check.check_for('defense'):
+                time.sleep(2)
 
-        if entered_battle_check.check_for('enter'):
-            break
+            if coliseum_page_check.check_for('defense'):
+                coliseum_bot.print('Attempting to start battle.')
+                enemy_b.click()
+                time.sleep(5)
+                enemy_enter_b.click()
+                time.sleep(5)
 
-        auto_b.click()
-        time.sleep(10)
+                # If did not enter battle
+                if entered_battle_check.check_for('enter'):
+                    coliseum_bot.print('No more battles. Exiting')
+                    break
 
-        while not leave_check.check_for('leave'):
-            time.sleep(1)
+                # Loading Screen
+                coliseum_bot.print('Waiting for battle start.')
+                while not auto_b_check.check_for('A', filter_str=True):
+                    time.sleep(2)
 
-        leave_check.click()
-        time.sleep(10)
+            coliseum_bot.print('In battle.')
+            time.sleep(2)
+            auto_b.click()
+            time.sleep(10)
+            coliseum_bot.print('Waiting for battle end.')
+
+            while not leave_check.check_for('leave'):
+                time.sleep(2)
+
+            coliseum_bot.print('Battle ended. Leaving.')
+            leave_check.click()
+            time.sleep(10)
 
     coliseum_bot.set_cooldown_time()
     game_control.back_to_main()

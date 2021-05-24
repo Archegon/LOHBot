@@ -92,12 +92,18 @@ class Region(BasePosition):
     def read(self, visualize=False):
         return Region.game.read_region(self.position(), visualize=visualize)
 
-    def check_for(self, check_str='None', visualize=False):
+    def check_for(self, check_str='None', visualize=False, filter_str=False):
         read = self.read(visualize=visualize)
 
         if len(read):
-            Region.print(f'Result: {read[0][1].upper()}  Check: {check_str.upper()}')
-            if read[0][1].upper() == check_str.upper():
+            read = self.read(visualize=visualize)[0][1]
+
+            if filter_str:
+                read = ''.join(e for e in read if e.isalnum())
+
+            Region.print(f'Result: {read.upper()}  Check: {check_str.upper()}')
+
+            if read.upper() == check_str.upper():
                 return True
             else:
                 return False

@@ -7,10 +7,14 @@ module_f = Savefile(module_save)
 
 
 class Module:
-    instances = []
+    instances = {}
+    start_time = None
 
     def __init__(self, name, cooldown=0, enable=True, start_only=False, load_data=True, standalone=False):
-        self.__class__.instances.append(self)
+        temp_dict = {
+            name: self
+        }
+        self.__class__.instances.update(temp_dict)
         self.cooldown = cooldown
         self.cooldown_end = 0
         self.load_data = load_data
@@ -19,6 +23,7 @@ class Module:
         self.standalone = standalone
         self.routine = None
         self.enable = enable
+        self.state = None
 
     def load(self):
         if self.load_data:
@@ -68,9 +73,11 @@ class Module:
     def run_routine(self):
         print("=========================================")
         self.print("Starting routine!")
+        Module.start_time = time.time()
         loh.b_window.set_focus()
         self.routine()
         self.save()
+        Module.start_time = None
         self.print("Routine Ended!")
         print("=========================================")
 
@@ -97,23 +104,33 @@ class ModuleManager:
 
     # Run all enabled modules, depending on their cooldown timers.
     def run(self, module_name=None):
-        if module_name is None or not self.stop:
-            for module in self.modules:
-                if module.run():
-                    module.run_routine()
+        if module_name is None:
+            for key in self.modules:
+                if not self.stop:
+                    if self.modules[key].run():
+                        self.modules[key].run_routine()
         else:
             self.modules[module_name].run_routine()
 
     def run_start(self):
         if not self.stop:
-            for module in self.modules:
-                if module.run_start():
-                    module.run_routine()
+            for key in self.modules:
+                if self.modules[key].run_start():
+                    self.modules[key].run_routine()
+
+    def check_stuck(self):
+        # Use in a separate thread only
+        time_out = 300
+
+        if not self.stop:
+            while True:
+                if time.time() - Module.start_time >= time_out:
+                    return True
 
     def load(self):
-        for module in self.modules:
-            module.load()
+        for key in self.modules:
+            self.modules[key].load()
 
     def save(self):
-        for module in self.modules:
-            module.save()
+        for key in self.modules:
+            self.modules[key].save()
