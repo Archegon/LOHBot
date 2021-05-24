@@ -2,6 +2,7 @@ import abc
 import time
 import pyautogui
 import cv2
+import re
 from game import loh
 
 
@@ -64,7 +65,7 @@ class BasePosition(metaclass=abc.ABCMeta):
 
     @staticmethod
     def print(txt):
-        return print('\t' + txt)
+        return print('\tPosition Class: ' + txt)
 
 
 class Point(BasePosition):
@@ -96,10 +97,10 @@ class Region(BasePosition):
         read = self.read(visualize=visualize)
 
         if len(read):
-            read = self.read(visualize=visualize)[0][1]
+            read = read[0][1]
 
             if filter_str:
-                read = ''.join(e for e in read if e.isalnum())
+                read = re.sub(r"[^a-zA-Z0-9 ]+", '', read)
 
             Region.print(f'Result: {read.upper()}  Check: {check_str.upper()}')
 
