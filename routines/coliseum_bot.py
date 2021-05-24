@@ -50,7 +50,7 @@ def coliseum_bot_routine():
 
                 # Loading Screen
                 coliseum_bot.print('Waiting for battle start.')
-                while not auto_b_check.check_for('A', filter_str=True):
+                while not auto_b_check.check_for('A', filter_str=True, inside=True):
                     time.sleep(2)
 
             coliseum_bot.print('In battle.')

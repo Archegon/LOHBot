@@ -8,7 +8,7 @@ module_f = Savefile(module_save)
 
 class Module:
     instances = {}
-    start_time = None
+    start_time = time.time()
 
     def __init__(self, name, cooldown=0, enable=True, start_only=False, load_data=True, standalone=False):
         temp_dict = {
@@ -101,6 +101,7 @@ class ModuleManager:
     def __init__(self):
         self.modules = Module.instances
         self.stop = False
+        self.time_out = 600
 
     # Run all enabled modules, depending on their cooldown timers.
     def run(self, module_name=None):
@@ -120,12 +121,12 @@ class ModuleManager:
 
     def check_stuck(self):
         # Use in a separate thread only
-        time_out = 300
-
         if not self.stop:
             while True:
-                if time.time() - Module.start_time >= time_out:
+                if time.time() - Module.start_time >= self.time_out:
+                    print("STUCK!")
                     return True
+                time.sleep(5)
 
     def load(self):
         for key in self.modules:

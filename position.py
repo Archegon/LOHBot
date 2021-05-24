@@ -93,7 +93,7 @@ class Region(BasePosition):
     def read(self, visualize=False):
         return Region.game.read_region(self.position(), visualize=visualize)
 
-    def check_for(self, check_str='None', visualize=False, filter_str=False):
+    def check_for(self, check_str='None', visualize=False, filter_str=False, inside=False):
         read = self.read(visualize=visualize)
 
         if len(read):
@@ -104,10 +104,16 @@ class Region(BasePosition):
 
             Region.print(f'Check Result: {read.upper()}  Check: {check_str.upper()}')
 
-            if read.upper() == check_str.upper():
-                return True
+            if inside:
+                if check_str.upper() in read.upper():
+                    return True
+                else:
+                    return False
             else:
-                return False
+                if read.upper() == check_str.upper():
+                    return True
+                else:
+                    return False
         else:
             Region.print("No Result")
             return False

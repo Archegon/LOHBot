@@ -20,8 +20,8 @@ def expedition_collector_routine():
 
     world_b.click()
 
-    if complete_check.check_for('completel'):
-        while complete_check.check_for('completel'):
+    if complete_check.check_for('complete', inside=True):
+        while complete_check.check_for('complete', inside=True):
             complete_check.click()
             time.sleep(3)
 
