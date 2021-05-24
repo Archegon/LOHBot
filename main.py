@@ -22,7 +22,7 @@ def setup():
 
 def run_modules():
     while True:
-        module_manager.run('Coliseum Bot')
+        module_manager.run()
 
 
 def app_restart():
