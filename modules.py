@@ -106,12 +106,18 @@ class ModuleManager:
     # Run all enabled modules, depending on their cooldown timers.
     def run(self, module_name=None):
         if module_name is None:
-            for key in self.modules:
-                if not self.stop:
+            while not self.stop:
+                for key in self.modules:
                     if self.modules[key].run():
                         self.modules[key].run_routine()
+
+                    if self.stop:
+                        break
         else:
-            self.modules[module_name].run_routine()
+            while not self.stop:
+                self.modules[module_name].run_routine()
+
+        print("MODULE RUN STOPPED!")
 
     def run_start(self):
         if not self.stop:
@@ -121,13 +127,10 @@ class ModuleManager:
 
     def check_stuck(self):
         # Use in a separate thread only
-        if not self.stop:
-            while True:
-                if Module.start_time is not None:
-                    if time.time() - Module.start_time >= self.time_out:
-                        print("STUCK!")
-                        return True
-                time.sleep(5)
+        if Module.start_time is not None:
+            if time.time() - Module.start_time >= self.time_out:
+                print("STUCK!")
+                return True
 
     def load(self):
         for key in self.modules:

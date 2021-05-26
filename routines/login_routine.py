@@ -2,7 +2,6 @@ import time
 from modules import Module
 from position import Region, Point
 from game import game_control
-from routines.routines_setup import module_manager
 
 # Login Module
 login = Module('Login', start_only=True)

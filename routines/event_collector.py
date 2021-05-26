@@ -19,7 +19,7 @@ def event_collector_routine():
     energetic_b_list = [Point(1496, 841, 1039, 511), Point(1496, 841, 843, 645), Point(1496, 841, 699, 484),
                         Point(1496, 841, 566, 632), Point(1496, 841, 428, 471)]
 
-    check_string = ['login event', 'paid to upgrade', 'energetic efforts']
+    check_string = ['login event', 'energetic efforts']
 
     event_b.click()
     time.sleep(5)
@@ -33,13 +33,6 @@ def event_collector_routine():
                 if check == 'login event':
                     for login_b in login_b_list:
                         login_b.click()
-                        time.sleep(1)
-
-                    random_b.click()
-                    time.sleep(2)
-                elif check == 'paid to upgrade':
-                    for ptu_b in ptu_b_list:
-                        ptu_b.click()
                         time.sleep(1)
 
                     random_b.click()
