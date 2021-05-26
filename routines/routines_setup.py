@@ -24,6 +24,6 @@ home_drag_end = Point(1503, 845, 1470, 90)
 game_control.add_drag('MysticToHome', home_drag_start, home_drag_end)
 
 # Set MAIN PAGE
-quit_confirm_check = Region(1681, 945, 620, 421, 738, 466)
-game_control.set_quit_confirmation('are you', quit_confirm_check)
+quit_confirm_check = Region(1651, 928, 907, 683, 1034, 738)
+game_control.set_quit_confirmation('leave', quit_confirm_check)
 

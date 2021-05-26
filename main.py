@@ -15,6 +15,8 @@ def setup():
 
         try:
             module_thread.result()
+            print("module stopped.")
+            app_restart()
         except:
             print("module_thread exception raised")
             app_restart()
