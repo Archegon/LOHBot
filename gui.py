@@ -11,7 +11,7 @@ root.columnconfigure(1, weight=1)
 root.rowconfigure(0, weight=1)
 
 tab1 = ttk.Frame(notebook)
-tab1.columnconfigure(0, weight=3)
+tab1.columnconfigure(0, weight=7)
 tab1.columnconfigure(1, weight=1)
 tab1.rowconfigure(0, weight=1)
 
