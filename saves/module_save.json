@@ -45,6 +45,6 @@
     },
     "Auto Primeval": {
         "cooldown_end": 0,
-        "enable": false
+        "enable": true
     }
 }
