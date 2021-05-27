@@ -10,7 +10,7 @@ class Module:
     instances = {}
     start_time = time.time()
 
-    def __init__(self, name, cooldown=0, enable=True, start_only=False, load_data=True, standalone=False):
+    def __init__(self, name, cooldown=0, enable=True, start_only=False, load_data=True, standalone=False, timeout=600):
         temp_dict = {
             name: self
         }
@@ -24,6 +24,7 @@ class Module:
         self.routine = None
         self.enable = enable
         self.state = None
+        self.timeout = timeout
 
     def load(self):
         if self.load_data:
@@ -101,7 +102,7 @@ class ModuleManager:
     def __init__(self):
         self.modules = Module.instances
         self.stop = False
-        self.time_out = 600
+        self.timeout = 600
 
     # Run all enabled modules, depending on their cooldown timers.
     def run(self, module_name=None):
@@ -109,12 +110,14 @@ class ModuleManager:
             while not self.stop:
                 for key in self.modules:
                     if self.modules[key].run():
+                        self.timeout = self.modules[key].timeout
                         self.modules[key].run_routine()
 
                     if self.stop:
                         break
         else:
             while not self.stop:
+                self.timeout = self.modules[module_name].timeout
                 self.modules[module_name].run_routine()
 
         print("MODULE RUN STOPPED!")
@@ -123,12 +126,13 @@ class ModuleManager:
         if not self.stop:
             for key in self.modules:
                 if self.modules[key].run_start():
+                    self.timeout = self.modules[key].timeout
                     self.modules[key].run_routine()
 
     def check_stuck(self):
         # Use in a separate thread only
         if Module.start_time is not None:
-            if time.time() - Module.start_time >= self.time_out:
+            if time.time() - Module.start_time >= self.timeout:
                 print("STUCK!")
                 return True
 

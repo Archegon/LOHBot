@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Fixed restarts and other updates">
+    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Fixed Fairy Collector">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routines/fairy_collector.py" beforeDir="false" afterPath="$PROJECT_DIR$/routines/fairy_collector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/game_region.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/game_region.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/position.py" beforeDir="false" afterPath="$PROJECT_DIR$/position.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routines/primeval_auto.py" beforeDir="false" afterPath="$PROJECT_DIR$/routines/primeval_auto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +64,7 @@
       <recent name="C:\Users\ngtaw\PycharmProjects\LOHBot\saves" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.gui">
+  <component name="RunManager" selected="Python.test">
     <configuration name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="LOHBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -171,9 +174,6 @@
       <module name="LOHBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -189,8 +189,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.gui" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.gui" />
       <item itemvalue="Python.modules" />
       <item itemvalue="Python.routines" />
       <item itemvalue="Python.screen_position_finder" />
@@ -198,9 +198,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.gui" />
-        <item itemvalue="Python.screen_position_finder" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.screen_position_finder" />
+        <item itemvalue="Python.gui" />
         <item itemvalue="Python.routines" />
         <item itemvalue="Python.modules" />
       </list>
@@ -432,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622031592584</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Fixed Fairy Collector">
+      <created>1622089873954</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1622089873954</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -477,6 +484,7 @@
     <MESSAGE value="Fixed Stuck bug." />
     <MESSAGE value="Fixed Quit confirmation." />
     <MESSAGE value="Fixed restarts and other updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed restarts and other updates" />
+    <MESSAGE value="Fixed Fairy Collector" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Fairy Collector" />
   </component>
 </project>
