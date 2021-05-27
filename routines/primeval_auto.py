@@ -44,7 +44,9 @@ def auto_primeval_routine():
         battle_outcome_check.click()
         time.sleep(3)
 
+    auto_primeval.print('Going to experience hall.')
     game_control.back()
+    time.sleep(5)
     hall_e_b.click()
 
     for floor in floor_list:
