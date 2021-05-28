@@ -4,7 +4,7 @@ from position import Region, Point
 from game import game_control
 
 # Auto Primeval Halls
-auto_primeval = Module('Auto Primeval', 43200, timeout=1800)
+auto_primeval = Module('Auto Primeval', 10800, timeout=1800)
 
 
 def auto_primeval_routine():

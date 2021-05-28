@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Added Auto Primeval and adjustable timeout.">
+    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Update Primeval Auto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routines/primeval_auto.py" beforeDir="false" afterPath="$PROJECT_DIR$/routines/primeval_auto.py" afterDir="false" />
     </list>
@@ -170,6 +170,9 @@
       <module name="LOHBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -185,8 +188,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.gui" />
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.modules" />
       <item itemvalue="Python.routines" />
       <item itemvalue="Python.screen_position_finder" />
@@ -449,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622117609476</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Update Primeval Auto">
+      <created>1622118471051</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1622118471051</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,6 +506,7 @@
     <MESSAGE value="Fixed restarts and other updates" />
     <MESSAGE value="Fixed Fairy Collector" />
     <MESSAGE value="Added Auto Primeval and adjustable timeout." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Auto Primeval and adjustable timeout." />
+    <MESSAGE value="Update Primeval Auto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Primeval Auto" />
   </component>
 </project>
