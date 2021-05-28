@@ -53,6 +53,7 @@ class BasePosition(metaclass=abc.ABCMeta):
         pass
 
     def click(self):
+        BasePosition.game.set_focus()
         if self.right is None and self.bottom is None:
             pyautogui.click(self.position())
         else:
@@ -169,6 +170,7 @@ class Region(BasePosition):
         return center_x, center_y
 
     def locate_click(self, check_str, visualize=False):
+        BasePosition.game.set_focus()
         pyautogui.click(self.locate(check_str, visualize=visualize))
         time.sleep(0.5)
 
