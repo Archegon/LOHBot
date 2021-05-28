@@ -20,56 +20,35 @@ def auto_primeval_routine():
     world_b.click()
     time.sleep(3)
     p_halls_b.click()
-    hall_t_b.click()
 
-    for floor in floor_list:
-        while not ready_check.check_for('ready'):
-            pass
+    for hall in list((hall_t_b, hall_e_b)):
+        hall.click()
 
-        floor.click()
-        ready_check.click()
-        time.sleep(3)
+        for floor in floor_list:
+            while not ready_check.check_for('ready'):
+                pass
 
-        if ready_check.check_for('ready'):
-            auto_primeval.print('Cannot enter battle.')
-            continue
+            floor.click()
+            ready_check.click()
+            time.sleep(3)
 
-        enter_b.click()
-        time.sleep(60)
+            if ready_check.check_for('ready'):
+                auto_primeval.print('Cannot enter battle.')
+                continue
 
-        while not battle_outcome_check.check_for('leave'):
-            time.sleep(10)
-            pass
+            enter_b.click()
+            time.sleep(60)
 
-        battle_outcome_check.click()
-        time.sleep(3)
+            while not battle_outcome_check.check_for('leave'):
+                time.sleep(10)
+                pass
 
-    auto_primeval.print('Going to experience hall.')
-    game_control.back()
-    time.sleep(5)
-    hall_e_b.click()
+            battle_outcome_check.click()
+            time.sleep(3)
 
-    for floor in floor_list:
-        while not ready_check.check_for('ready'):
-            pass
-
-        floor.click()
-        ready_check.click()
-        time.sleep(3)
-
-        if ready_check.check_for('ready'):
-            auto_primeval.print('Cannot enter battle.')
-            continue
-
-        enter_b.click()
-        time.sleep(60)
-
-        while not battle_outcome_check.check_for('leave'):
-            time.sleep(10)
-            pass
-
-        battle_outcome_check.click()
-        time.sleep(3)
+        auto_primeval.print('Going to next hall.')
+        game_control.back()
+        time.sleep(5)
 
     auto_primeval.set_cooldown_time()
     game_control.back_to_main()
