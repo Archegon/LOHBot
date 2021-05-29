@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Added Set Focus to all clicks event">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routines/primeval_auto.py" beforeDir="false" afterPath="$PROJECT_DIR$/routines/primeval_auto.py" afterDir="false" />
-    </list>
+    <list default="true" id="d9bc719a-1f55-4409-9ab0-0f4a60485580" name="Default Changelist" comment="Fixed Primeval Auto." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -480,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622187157926</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Fixed Primeval Auto.">
+      <created>1622314444811</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1622314444811</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -529,6 +533,7 @@
     <MESSAGE value="Added Auto Primeval and adjustable timeout." />
     <MESSAGE value="Update Primeval Auto" />
     <MESSAGE value="Added Set Focus to all clicks event" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Set Focus to all clicks event" />
+    <MESSAGE value="Fixed Primeval Auto." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Primeval Auto." />
   </component>
 </project>

@@ -103,7 +103,7 @@ class Region(BasePosition):
             if filter_str:
                 read = re.sub(r"[^a-zA-Z0-9 ]+", '', read)
 
-            Region.print(f'Check Result: {read.upper()}  Check: {check_str.upper()}')
+            Region.print(f'Result: {read.upper()}  Check: {check_str.upper()}')
 
             if inside:
                 if check_str.upper() in read.upper():
@@ -116,7 +116,7 @@ class Region(BasePosition):
                 else:
                     return False
         else:
-            Region.print("No Result")
+            Region.print(f"Cannot find: {check_str}")
             return False
 
     def check_empty(self, visualize=False):
