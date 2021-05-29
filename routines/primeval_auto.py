@@ -21,7 +21,7 @@ def auto_primeval_routine():
     time.sleep(3)
     p_halls_b.click()
 
-    for hall in list((hall_t_b, hall_e_b)):
+    for hall in [hall_t_b, hall_e_b]:
         hall.click()
 
         for floor in floor_list:
@@ -45,6 +45,9 @@ def auto_primeval_routine():
 
             battle_outcome_check.click()
             time.sleep(3)
+
+        while not ready_check.check_for('ready'):
+            pass
 
         auto_primeval.print('Going to next hall.')
         game_control.back()
