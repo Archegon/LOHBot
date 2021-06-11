@@ -1,3 +1,10 @@
-from routines.routines_setup import module_manager
+import math
 
-module_manager.run('Auto Primeval')
+remaining_time = 3600
+hours = math.floor(remaining_time/3600)
+remaining_time = remaining_time-(3600*hours)
+minutes = math.floor(remaining_time/60)
+remaining_time = remaining_time-(60*minutes)
+seconds = math.floor(remaining_time)
+
+print(f'H: {hours} M: {minutes} S: {seconds}')

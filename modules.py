@@ -1,4 +1,5 @@
 import time
+import math
 from save import Savefile
 from game import loh
 
@@ -10,7 +11,7 @@ class Module:
     instances = {}
     start_time = time.time()
 
-    def __init__(self, name, cooldown=0, enable=True, start_only=False, load_data=True, standalone=False, timeout=600):
+    def __init__(self, name, cooldown=0, start_only=False, load_data=True, standalone=False, timeout=600):
         temp_dict = {
             name: self
         }
@@ -22,7 +23,7 @@ class Module:
         self.start_only = start_only
         self.standalone = standalone
         self.routine = None
-        self.enable = enable
+        self.enable = True
         self.state = None
         self.timeout = timeout
 
@@ -48,9 +49,29 @@ class Module:
         module_f.update(save_dict)
         self.print("Saved data")
 
+    def set_enable(self, state):
+        self.enable = state
+        self.save()
+
     def get_name(self):
         name = self.name + ":"
         return name
+
+    def get_time(self):
+        remaining_time = self.cooldown_end - time.time()
+
+        if remaining_time <= 0:
+            hours = 0
+            minutes = 0
+            seconds = 0
+        else:
+            hours = math.floor(remaining_time / 3600)
+            remaining_time = remaining_time - (3600 * hours)
+            minutes = math.floor(remaining_time / 60)
+            remaining_time = remaining_time - (60 * minutes)
+            seconds = math.floor(remaining_time)
+
+        return seconds, minutes, hours
 
     # To set the module current state. Trackable and logging
     def set_state(self, state):

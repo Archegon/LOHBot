@@ -14,12 +14,12 @@ def event_collector_routine():
     event_txt_check = Region(1496, 841, 419, 93, 1134, 198)
     login_b_list = [Point(1496, 841, 1348, 573), Point(1496, 841, 1144, 561), Point(1496, 841, 967, 574),
                     Point(1496, 841, 765, 596), Point(1496, 841, 587, 556), Point(1496, 841, 389, 551)]
-    ptu_b_list = [Point(1496, 841, 1017, 500), Point(1496, 841, 870, 649), Point(1496, 841, 732, 504),
-                  Point(1496, 841, 581, 655), Point(1496, 841, 444, 494)]
+    four_b_list = [Point(1651, 928, 543, 663), Point(1651, 928, 808, 738), Point(1651, 928, 1138, 706),
+                   Point(1651, 928, 1411, 645)]
     energetic_b_list = [Point(1496, 841, 1039, 511), Point(1496, 841, 843, 645), Point(1496, 841, 699, 484),
                         Point(1496, 841, 566, 632), Point(1496, 841, 428, 471)]
 
-    check_string = ['login event', 'energetic efforts']
+    check_string = ['login event', 'energetic efforts', 'daily', 'ad gi']
 
     event_b.click()
     time.sleep(5)
@@ -29,7 +29,7 @@ def event_collector_routine():
         time.sleep(1)
 
         for check in check_string:
-            if event_txt_check.check_for(check, filter_str=True):
+            if event_txt_check.check_for(check, filter_str=True, inside=True):
                 if check == 'login event':
                     for login_b in login_b_list:
                         login_b.click()
@@ -40,6 +40,20 @@ def event_collector_routine():
                 elif check == 'energetic efforts':
                     for energetic_b in energetic_b_list:
                         energetic_b.click()
+                        time.sleep(1)
+
+                    random_b.click()
+                    time.sleep(2)
+                elif check == 'daily':
+                    for point in four_b_list:
+                        point.click()
+                        time.sleep(1)
+
+                    random_b.click()
+                    time.sleep(2)
+                elif check == 'ad gi':
+                    for point in four_b_list:
+                        point.click()
                         time.sleep(1)
 
                     random_b.click()
