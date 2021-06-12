@@ -3,7 +3,7 @@ from modules import Module
 from routines.routines_setup import module_manager
 
 # Auto Restart
-auto_restart = Module('Auto Restart', 3600, load_data=False)
+auto_restart = Module('Auto Restart', 7200, load_data=False)
 auto_restart.set_cooldown_time()
 
 
