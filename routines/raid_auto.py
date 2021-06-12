@@ -53,8 +53,8 @@ def raid_auto_routine():
     else:
         raid_auto.print('Raid not available')
 
+    raid_auto.set_cooldown_time()
+    game_control.back_to_main()
 
-raid_auto.set_cooldown_time()
-game_control.back_to_main()
 
 raid_auto.set_routine(raid_auto_routine)
