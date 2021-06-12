@@ -17,41 +17,43 @@ def raid_auto_routine():
 
     world_b.click()
     raid_check.click()
-    time.sleep(2)
-    start_check.click()
+    time.sleep(3)
 
-    if not start_check.check_for('start', filter_str=True, inside=True):
-        # Raid available
-        ready_b.click()
-        # Wait for raid to end
-        raid_auto.print('Waiting for raid to end')
-        time.sleep(300)
-
-        while not battle_end_check.check_for('tap'):
-            time.sleep(5)
-
-        battle_end_check.click()
-        after_b.click()
-        time.sleep(5)
-
-        while not start_check.check_for('start'):
-            time.sleep(2)
-
+    if not raid_check.check_for('cradle', filter_str=True, inside=True):
         start_check.click()
-        ready_b.click()
 
-        # Wait for raid to end
-        raid_auto.print('Waiting for raid to end')
-        time.sleep(180)
+        if not start_check.check_for('start', filter_str=True, inside=True):
+            # Raid available
+            ready_b.click()
+            # Wait for raid to end
+            raid_auto.print('Waiting for raid to end')
+            time.sleep(300)
 
-        while not battle_end_check.check_for('tap'):
+            while not battle_end_check.check_for('tap'):
+                time.sleep(5)
+
+            battle_end_check.click()
+            after_b.click()
             time.sleep(5)
 
-        battle_end_check.click()
-        after_b.click()
-        time.sleep(5)
-    else:
-        raid_auto.print('Raid not available')
+            while not start_check.check_for('start'):
+                time.sleep(2)
+
+            start_check.click()
+            ready_b.click()
+
+            # Wait for raid to end
+            raid_auto.print('Waiting for raid to end')
+            time.sleep(180)
+
+            while not battle_end_check.check_for('tap'):
+                time.sleep(5)
+
+            battle_end_check.click()
+            after_b.click()
+            time.sleep(5)
+        else:
+            raid_auto.print('Raid not available')
 
     raid_auto.set_cooldown_time()
     game_control.back_to_main()
