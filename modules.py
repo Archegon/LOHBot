@@ -150,6 +150,13 @@ class ModuleManager:
                     self.timeout = self.modules[key].timeout
                     self.modules[key].run_routine()
 
+    def get_modules(self):
+        modules = []
+        for key in self.modules:
+            modules.append(self.modules[key])
+
+        return modules
+
     def check_stuck(self):
         # Use in a separate thread only
         if Module.start_time is not None:
