@@ -22,6 +22,7 @@ def coliseum_bot_routine():
     coliseum_page_check = Region(1649, 928, 543, 541, 676, 579)
     auto_b_check = Region(1649, 928, 381, 862, 425, 897)
     auto_enable = False
+    start_time = None
 
     game_control.add_drag('WorldToColiseum', coliseum_drag_start, coliseum_drag_end)
 
@@ -50,11 +51,15 @@ def coliseum_bot_routine():
                     break
 
                 auto_enable = False
+                start_time = time.time()
 
             while True:
                 if not auto_enable:
                     if auto_b_check.check_for('A', filter_str=True, inside=True):
                         time.sleep(2)
+                        auto_b.click()
+                        auto_enable = True
+                    elif time.time() - start_time >= 60:
                         auto_b.click()
                         auto_enable = True
 

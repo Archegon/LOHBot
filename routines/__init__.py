@@ -10,6 +10,7 @@ from routines import login_routine
 from routines import mails_collector
 from routines import mystic_routine
 from routines import primeval_auto
+from routines import raid_auto
 
 # Import enabled modules here
 print('routines init')
