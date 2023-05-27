@@ -1,4 +1,6 @@
 # LOHBot
+OCR based automation
+
 
 * Features:
     * Auto Dailies Routine
